@@ -10,3 +10,23 @@ export default function BoardsPage() {
     </>
   );
 }
+
+export const getStaticProps = async (context) => {
+  const { boardId } = context.params;
+  return {
+    props: {
+      boardId,
+    },
+  };
+};
+
+export const getStaticPaths = async () => {
+  return {
+    paths: [
+      { params: { boardId: "1" } },
+      { params: { boardId: "2" } },
+      { params: { boardId: "3" } },
+    ],
+    fallback: false,
+  };
+};
